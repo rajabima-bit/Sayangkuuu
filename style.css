@@ -22,10 +22,20 @@ body {background: linear-gradient(135deg,#ffd6e8,#fff); overflow-x:hidden;}
 #loginError {color:red; margin-top:10px;}
 
 /* Galeri */
-.photos {display:flex; flex-wrap:wrap; gap:15px; justify-content:center; margin-top:20px;}
-.photos img {width:250px; height:250px; border-radius:15px; transition: transform 0.3s, opacity 0.5s; opacity:0;}
+.photos {
+  display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:20px;
+  background: linear-gradient(135deg, #ffe6f0, #fff0f5); /* background lucu pastel */
+  padding:20px; border-radius:20px;
+}
+.photos img {
+  width:150px; height:150px; /* lebih kecil */
+  border-radius:15px; border:2px solid #ffb6c1;
+  transition: transform 0.3s, opacity 0.5s;
+  opacity:0;
+}
 .photos img.visible {opacity:1; transform:scale(1);}
-.photos img:hover {transform:scale(1.1);}
+.photos img:hover {transform:scale(1.2) rotate(5deg);}
+
 #toNotesBtn {margin-top:20px; padding:10px 20px; border:none; border-radius:10px; background:#ff69b4; color:white; cursor:pointer;}
 
 /* Notes */
