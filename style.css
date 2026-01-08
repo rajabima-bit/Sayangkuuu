@@ -1,3 +1,4 @@
+/* Reset & body */
 * {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif;}
 body {background: linear-gradient(135deg,#ffd6e8,#fff); overflow-x:hidden;}
 
@@ -25,13 +26,14 @@ body {background: linear-gradient(135deg,#ffd6e8,#fff); overflow-x:hidden;}
 .photos img {width:250px; height:250px; border-radius:15px; transition: transform 0.3s, opacity 0.5s; opacity:0;}
 .photos img.visible {opacity:1; transform:scale(1);}
 .photos img:hover {transform:scale(1.1);}
+#toNotesBtn {margin-top:20px; padding:10px 20px; border:none; border-radius:10px; background:#ff69b4; color:white; cursor:pointer;}
 
 /* Notes */
 textarea {width:100%; max-width:500px; height:120px; border-radius:10px; padding:10px; border:1px solid #ffb6c1; margin:10px auto; resize:none;}
 #heartBtn {padding:10px 20px; border:none; border-radius:10px; background:#ff69b4; color:white; cursor:pointer; margin-top:10px;}
 
 /* Musik */
-.music-btn {position:fixed; bottom:20px; right:20px; padding:10px 15px; background:#ff69b4; color:white; border:none; border-radius:10px; cursor:pointer;}
+.music-btn {padding:10px 15px; background:#ff69b4; color:white; border:none; border-radius:10px; cursor:pointer; margin-top:10px;}
 
 /* Animasi hati */
 .heart {
