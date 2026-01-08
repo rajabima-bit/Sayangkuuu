@@ -1,42 +1,69 @@
-* {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif;}
-body {background: linear-gradient(135deg,#ffd6e8,#fff); overflow-x:hidden;}
+// Part Elements
+const part1 = document.getElementById('part1');
+const part2 = document.getElementById('part2');
+const part3 = document.getElementById('part3');
+const loginBtn = document.getElementById('loginBtn');
+const passwordInput = document.getElementById('passwordInput');
+const loginError = document.getElementById('loginError');
 
-/* Part umum */
-.part {
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  min-height:100vh; text-align:center; padding:20px; opacity:0; transform:translateY(30px);
-  transition: all 1s ease;
+// Musik
+const music = document.getElementById('myMusic');
+const musicBtn = document.getElementById('musicBtn');
+
+// Notes
+const heartBtn = document.getElementById('heartBtn');
+
+// Foto galeri
+const photos = document.querySelectorAll('.photos img');
+
+// Login
+loginBtn.addEventListener('click', () => {
+  const pw = passwordInput.value.trim().toLowerCase();
+  if(pw === 'sayangkuuu'){
+    part1.classList.remove('active');
+    part2.classList.add('active');
+    playMusic();
+    showPhotos();
+    scrollToPart(part2);
+  } else {
+    loginError.textContent = 'Ups, Salahh';
+  }
+});
+
+// Musik play/pause
+function playMusic(){
+  music.play().catch(()=>{}); // beberapa browser butuh interaksi
+  musicBtn.textContent = 'Pause Musik 🎵';
 }
-.part.active {opacity:1; transform:translateY(0);}
+musicBtn.addEventListener('click', () => {
+  if(music.paused){ music.play(); musicBtn.textContent='Pause Musik 🎵'; }
+  else { music.pause(); musicBtn.textContent='Play Musik 🎵'; }
+});
 
-/* Login */
-#part1 input {
-  padding:10px 15px; margin:10px 0; border-radius:10px; border:1px solid #ffb6c1;
-}
-#part1 button {
-  padding:10px 20px; border:none; border-radius:10px; background:#ff69b4; color:white; cursor:pointer;
-  transition: transform 0.2s;
-}
-#part1 button:hover {transform: scale(1.1);}
-#loginError {color:red; margin-top:10px;}
+// Heart button
+heartBtn.addEventListener('click', () => {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.style.left = Math.random() * window.innerWidth + 'px';
+  heart.textContent = '💖';
+  document.body.appendChild(heart);
+  setTimeout(()=>{heart.remove()}, 1000);
+});
 
-/* Galeri */
-.photos {display:flex; flex-wrap:wrap; gap:15px; justify-content:center; margin-top:20px;}
-.photos img {width:250px; height:250px; border-radius:15px; transition: transform 0.3s, opacity 0.5s; opacity:0;}
-.photos img.visible {opacity:1; transform:scale(1);}
-.photos img:hover {transform:scale(1.1);}
-
-/* Notes */
-textarea {width:100%; max-width:500px; height:120px; border-radius:10px; padding:10px; border:1px solid #ffb6c1; margin:10px auto; resize:none;}
-#heartBtn {padding:10px 20px; border:none; border-radius:10px; background:#ff69b4; color:white; cursor:pointer; margin-top:10px;}
-
-/* Musik */
-.music-btn {position:fixed; bottom:20px; right:20px; padding:10px 15px; background:#ff69b4; color:white; border:none; border-radius:10px; cursor:pointer;}
-
-/* Animasi hati */
-.heart {
-  position:absolute; color:#ff69b4; font-size:24px; animation: floatUp 1s forwards;
+// Scroll to part
+function scrollToPart(part){
+  part.scrollIntoView({behavior:'smooth'});
+  if(part === part2){
+    setTimeout(()=>part3.classList.add('active'), 1500); // notes muncul setelah galeri
+  }
 }
 
-/* Animasi */
-@keyframes floatUp {0%{opacity:1; transform:translateY(0) scale(1);} 100%{opacity:0; transform:translateY(-100px) scale(1.5);}}
+// Foto muncul bergantian
+function showPhotos(){
+  photos.forEach((photo, i) => {
+    setTimeout(()=>{photo.classList.add('visible');}, i*300);
+  });
+}
+
+// Inisialisasi
+part1.classList.add('active');
