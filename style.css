@@ -1,45 +1,42 @@
-/* Reset */
-* {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif;}
-body {background: linear-gradient(135deg, #ffd6e8, #fff); overflow-x:hidden;}
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif;}
+body {background: linear-gradient(135deg,#ffd6e8,#fff); overflow-x:hidden;}
 
-/* Login Page */
-.login-page {
-  display:flex; flex-direction:column; justify-content:center; align-items:center;
-  height:100vh; text-align:center; animation: fadeIn 1s ease-in;
+/* Part umum */
+.part {
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  min-height:100vh; text-align:center; padding:20px; opacity:0; transform:translateY(30px);
+  transition: all 1s ease;
 }
-.login-page input {
+.part.active {opacity:1; transform:translateY(0);}
+
+/* Login */
+#part1 input {
   padding:10px 15px; margin:10px 0; border-radius:10px; border:1px solid #ffb6c1;
 }
-.login-page button {
+#part1 button {
   padding:10px 20px; border:none; border-radius:10px; background:#ff69b4; color:white; cursor:pointer;
   transition: transform 0.2s;
 }
-.login-page button:hover {transform: scale(1.1);}
+#part1 button:hover {transform: scale(1.1);}
 #loginError {color:red; margin-top:10px;}
 
-/* Main Page */
-.main-page {display:none; padding:20px; animation: fadeIn 1s ease-in;}
-.main-page h1 {text-align:center; margin-bottom:20px; color:#ff69b4;}
-
-/* Musik */
-.music-section {text-align:center; margin-bottom:30px;}
-.music-section button {padding:10px 20px; border:none; border-radius:10px; background:#ffb6c1; color:white; cursor:pointer; margin-top:10px;}
-
-/* Gallery */
-.gallery {margin-bottom:30px;}
-.photos {display:flex; flex-wrap:wrap; gap:10px; justify-content:center;}
-.photos img {width:200px; border-radius:15px; transition: transform 0.3s;}
-.photos img:hover {transform: scale(1.1);}
+/* Galeri */
+.photos {display:flex; flex-wrap:wrap; gap:15px; justify-content:center; margin-top:20px;}
+.photos img {width:250px; height:250px; border-radius:15px; transition: transform 0.3s, opacity 0.5s; opacity:0;}
+.photos img.visible {opacity:1; transform:scale(1);}
+.photos img:hover {transform:scale(1.1);}
 
 /* Notes */
-.notes textarea {width:100%; max-width:500px; height:100px; margin:10px auto; display:block; border-radius:10px; padding:10px; border:1px solid #ffb6c1; resize:none;}
-.notes button {padding:10px 20px; border:none; border-radius:10px; background:#ff69b4; color:white; cursor:pointer; display:block; margin:10px auto;}
+textarea {width:100%; max-width:500px; height:120px; border-radius:10px; padding:10px; border:1px solid #ffb6c1; margin:10px auto; resize:none;}
+#heartBtn {padding:10px 20px; border:none; border-radius:10px; background:#ff69b4; color:white; cursor:pointer; margin-top:10px;}
 
-/* Heart animation */
+/* Musik */
+.music-btn {position:fixed; bottom:20px; right:20px; padding:10px 15px; background:#ff69b4; color:white; border:none; border-radius:10px; cursor:pointer;}
+
+/* Animasi hati */
 .heart {
   position:absolute; color:#ff69b4; font-size:24px; animation: floatUp 1s forwards;
 }
 
-/* Animations */
-@keyframes fadeIn {from{opacity:0;} to{opacity:1;}}
+/* Animasi */
 @keyframes floatUp {0%{opacity:1; transform:translateY(0) scale(1);} 100%{opacity:0; transform:translateY(-100px) scale(1.5);}}
