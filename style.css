@@ -42,6 +42,18 @@ body {background: linear-gradient(135deg,#ffd6e8,#fff); overflow-x:hidden;}
 textarea {width:100%; max-width:500px; height:120px; border-radius:10px; padding:10px; border:1px solid #ffb6c1; margin:10px auto; resize:none;}
 #heartBtn {padding:10px 20px; border:none; border-radius:10px; background:#ff69b4; color:white; cursor:pointer; margin-top:10px;}
 
+.rose-container {
+  margin-top:30px;
+  display:flex; justify-content:center; align-items:center;
+}
+#roseImg {
+  width:300px; /* ukuran besar */
+  transition: transform 1s;
+}
+#roseImg:hover {
+  transform: scale(1.2) rotate(-5deg);
+}
+
 /* Musik */
 .music-btn {padding:10px 15px; background:#ff69b4; color:white; border:none; border-radius:10px; cursor:pointer; margin-top:10px;}
 
