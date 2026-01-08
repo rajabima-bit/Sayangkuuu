@@ -1,10 +1,11 @@
-// Part Elements
+// Elements
 const part1 = document.getElementById('part1');
 const part2 = document.getElementById('part2');
 const part3 = document.getElementById('part3');
 const loginBtn = document.getElementById('loginBtn');
 const passwordInput = document.getElementById('passwordInput');
 const loginError = document.getElementById('loginError');
+const toNotesBtn = document.getElementById('toNotesBtn');
 
 // Musik
 const music = document.getElementById('myMusic');
@@ -13,34 +14,34 @@ const musicBtn = document.getElementById('musicBtn');
 // Notes
 const heartBtn = document.getElementById('heartBtn');
 
-// Foto galeri
+// Photos
 const photos = document.querySelectorAll('.photos img');
 
-// Login
+// ----- Login -----
 loginBtn.addEventListener('click', () => {
   const pw = passwordInput.value.trim().toLowerCase();
   if(pw === 'sayangkuuu'){
     part1.classList.remove('active');
     part2.classList.add('active');
-    playMusic();
+    playMusic();       // Musik langsung start
     showPhotos();
-    scrollToPart(part2);
   } else {
-    loginError.textContent = 'Ups, Salahh';
+    loginError.textContent = 'Ups,salah 😢';
   }
 });
 
-// Musik play/pause
+// ----- Musik -----
 function playMusic(){
-  music.play().catch(()=>{}); // beberapa browser butuh interaksi
+  music.play().catch(()=>{}); // Browser mungkin butuh interaksi
   musicBtn.textContent = 'Pause Musik 🎵';
 }
+
 musicBtn.addEventListener('click', () => {
   if(music.paused){ music.play(); musicBtn.textContent='Pause Musik 🎵'; }
   else { music.pause(); musicBtn.textContent='Play Musik 🎵'; }
 });
 
-// Heart button
+// ----- Heart button -----
 heartBtn.addEventListener('click', () => {
   const heart = document.createElement('div');
   heart.className = 'heart';
@@ -50,20 +51,23 @@ heartBtn.addEventListener('click', () => {
   setTimeout(()=>{heart.remove()}, 1000);
 });
 
-// Scroll to part
+// ----- Scroll / Part navigation -----
+toNotesBtn.addEventListener('click', () => {
+  part2.classList.remove('active');
+  part3.classList.add('active');
+  scrollToPart(part3);
+});
+
 function scrollToPart(part){
   part.scrollIntoView({behavior:'smooth'});
-  if(part === part2){
-    setTimeout(()=>part3.classList.add('active'), 1500); // notes muncul setelah galeri
-  }
 }
 
-// Foto muncul bergantian
+// ----- Foto muncul bergantian -----
 function showPhotos(){
   photos.forEach((photo, i) => {
     setTimeout(()=>{photo.classList.add('visible');}, i*300);
   });
 }
 
-// Inisialisasi
+// ----- Inisialisasi -----
 part1.classList.add('active');
