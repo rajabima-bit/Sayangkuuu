@@ -68,6 +68,12 @@ function showPhotos(){
     setTimeout(()=>{photo.classList.add('visible');}, i*300);
   });
 }
+// Mawar muncul setelah notes aktif
+const roseImg = document.getElementById('roseImg');
+
+part3.addEventListener('transitionend', () => {
+  roseImg.style.opacity = 1;
+});
 
 // ----- Inisialisasi -----
 part1.classList.add('active');
